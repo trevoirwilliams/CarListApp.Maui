@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarListApp.Maui.MainPage"
+             xmlns:model ="clr-namespace:CarListApp.Maui.Models"
+             xmlns:viewmodel ="clr-namespace:CarListApp.Maui.ViewModels"
+             x:DataType ="viewmodel:CarListViewModel"
+             Title="{Binding Title}">
+    <Grid ColumnDefinitions="*,*" ColumnSpacing="5" RowDefinitions="*, Auto">
+        <RefreshView Grid.ColumnSpan="2" 
+                     Command="{Binding GetCarListCommand}" 
+                     IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding Cars}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Car">
+                        <Grid Padding="10">
+                            <Frame HeightRequest="90">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CarListViewModel}}, Path=GetCarDetailsCommand }" 
+                                                          CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                                <HorizontalStackLayout Padding="10" Spacing="5">
+                                    <Label Text="{Binding Make}"></Label>
+                                    <Label Text="{Binding Model}"></Label>
+                                </HorizontalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        
+
+        <Button Text="Fetch Cars" Command="{Binding GetCarListCommand}" IsEnabled="{Binding IsNotLoading}" 
+                Grid.Row="1" Grid.Column="0" Margin="9"/>
+
+    </Grid>
+</ContentPage>
