@@ -15,5 +15,6 @@ public partial class CarDetailsPage : ContentPage
 		// Do fanciness 
 		
         base.OnNavigatedTo(args);
+		
     }
 }
