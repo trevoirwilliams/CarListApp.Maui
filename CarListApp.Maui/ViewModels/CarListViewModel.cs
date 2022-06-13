@@ -40,7 +40,7 @@ namespace CarListApp.Maui.ViewModels
         int carId;
 
         [ICommand]
-        async Task GetCarList()
+        public async Task GetCarList()
         {
             if (IsLoading) return;
             try
