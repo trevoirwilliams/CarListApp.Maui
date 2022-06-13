@@ -6,8 +6,14 @@
              Title="{Binding Car.Make}"
              x:DataType="vm:CarDetailsViewModel">
     <StackLayout>
+        <Label Text="{Binding Car.Make}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" FontSize="Medium"/>
+        <Label Text="{Binding Car.Model}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" FontSize="Medium"/>
         <Label Text="{Binding Car.Vin}"
                 VerticalOptions="Center" 
-                HorizontalOptions="Center" FontSize="100"/>
+                HorizontalOptions="Center" FontSize="Medium"/>
     </StackLayout>
 </ContentPage>
