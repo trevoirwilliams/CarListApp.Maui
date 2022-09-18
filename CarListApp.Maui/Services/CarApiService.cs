@@ -108,7 +108,7 @@ namespace CarListApp.Maui.Services
             catch (Exception ex)
             {
                 StatusMessage = "Failed to login successfully.";
-                return default;
+                return new AuthResponseModel();
             }
         }
 
