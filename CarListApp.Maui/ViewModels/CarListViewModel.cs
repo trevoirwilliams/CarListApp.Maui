@@ -39,7 +39,7 @@ namespace CarListApp.Maui.ViewModels
         [ObservableProperty]
         int carId;
 
-        [ICommand]
+        [RelayCommand]
         public async Task GetCarList()
         {
             if (IsLoading) return;
@@ -70,7 +70,7 @@ namespace CarListApp.Maui.ViewModels
             }
         }
 
-        [ICommand]
+        [RelayCommand]
         async Task GetCarDetails(int id)
         {
             if(id == 0) return;
@@ -78,7 +78,7 @@ namespace CarListApp.Maui.ViewModels
             await Shell.Current.GoToAsync($"{nameof(CarDetailsPage)}?Id={id}", true);
         }
 
-        [ICommand]
+        [RelayCommand]
         async Task SaveCar()
         {
             if (string.IsNullOrEmpty(Make) || string.IsNullOrEmpty(Model) || string.IsNullOrEmpty(Vin))
@@ -127,7 +127,7 @@ namespace CarListApp.Maui.ViewModels
             await ClearForm();
         }
 
-        [ICommand]
+        [RelayCommand]
         async Task DeleteCar(int id)
         {
             if (id==0)
@@ -150,14 +150,14 @@ namespace CarListApp.Maui.ViewModels
             await GetCarList();
         }
 
-        [ICommand]
+        [RelayCommand]
         async Task UpdateCar(int id)
         {
             AddEditButtonText = editButtonText;
             return;
         }
 
-        [ICommand]
+        [RelayCommand]
         async Task SetEditMode(int id)
         {
             AddEditButtonText = editButtonText;
@@ -177,7 +177,7 @@ namespace CarListApp.Maui.ViewModels
             Vin = car.Vin;
         }
 
-        [ICommand]
+        [RelayCommand]
         async Task ClearForm()
         {
             AddEditButtonText = createButtonText;

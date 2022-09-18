@@ -1,4 +1,3 @@
-using AndroidX.Lifecycle;
 using CarListApp.Maui.ViewModels;
 
 namespace CarListApp.Maui.Views;
