@@ -21,8 +21,9 @@ builder.Services.AddCors(o => {
     o.AddPolicy("AllowAll", a => a.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 });
 
-var conn = new SqliteConnection($"Data Source=C:\\carlistdb\\carlist.db");
+var conn = new SqliteConnection($"Data Source=carlist.db");
 builder.Services.AddDbContext<CarListDbContext>(o => o.UseSqlite(conn));
+
 
 builder.Services.AddIdentityCore<IdentityUser>()
     .AddRoles<IdentityRole>()
@@ -60,6 +61,11 @@ builder.Host.UseSerilog((ctx, lc) =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+using (var scope = app.Services.CreateScope())
+using (var context = scope.ServiceProvider.GetService<CarListDbContext>())
+{
+    context.Database.Migrate();
+}
 
 app.UseSwagger();
 app.UseSwaggerUI();
