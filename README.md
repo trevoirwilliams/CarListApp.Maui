@@ -25,7 +25,7 @@ The app uses an SQLite database to store the car data. This project also feature
 To get started with the app, you will need to clone this repository to your local machine:
 git clone https://github.com/trevoirwilliams/CarListApp.Maui.git
 
-Then, open the solution file (`CarManagerApp.sln`) in Visual Studio and build the solution. The app should launch automatically in the emulator.
+Then, open the solution file (`CarListApp.Maui.sln`) in Visual Studio and build the solution. The app should launch automatically in the emulator.
 
 ## Contributing
 
